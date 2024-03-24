@@ -1,36 +1,33 @@
-## Oncelar - Laravel 11 - Docker  
-### Laravel 11 - MariaDB - Phpmyadmin
+Laravel 11 sobre Contenedor Docker
 
-**Instalación:**  
-
-Clonar el repositorio.  
+Clonar el repositorio.
 
 Situados en /oncelar, desde la consola ejecutar los comandos docker:
 
 mkdir -p src && mkdir -p db
-USER_ID=$(id -u) docker-compose up -d  
+USER_ID=$(id -u) docker-compose up -d
 
-Configuracion acceso DB en file .env:  
+Configuracion acceso DB en file .env:
 
-DB_CONNECTION=mysql  
-DB_HOST=oncelar-db  
-DB_PORT=3310  
-DB_DATABASE=oncelar  
-DB_USERNAME=oncelar  
-DB_PASSWORD=00000000  
+DB_CONNECTION=mysql
+DB_HOST=oncelar-db
+DB_PORT=3310
+DB_DATABASE=oncelar
+DB_USERNAME=oncelar
+DB_PASSWORD=00000000
 
-**COMANDOS CON PHP ARTISAN DENTRO DEL CONTENEDOR**
+COMANDOS CON PHP ARTISAN DENTRO DEL CONTENEDOR
 
 Al cosntruir el contenedor se da de alta un usuario no root (your_local_user), con el cual es necesario loguearse dentro del contenedor.
-Este usuario pertenece al grupo www-data, por lo cual puede acceder a artisan.  
+Este usuario pertenece al grupo www-data, por lo cual puede acceder a artisan.
 
 Para dar de alta este usuario, en el Dockerfile aparece:
 
-ARG DEBIAN_FRONTEND=noninteractive  
-ARG USER_NAME=your_local_user  
-ARG USER_UID=1000  
-RUN useradd -u $USER_UID -ms /bin/bash $USER_NAME  
-RUN usermod -aG www-data $USER_NAME  
+ARG DEBIAN_FRONTEND=noninteractive
+ARG USER_NAME=your_local_user
+ARG USER_UID=1000
+RUN useradd -u $USER_UID -ms /bin/bash $USER_NAME
+RUN usermod -aG www-data $USER_NAME
 
 y para poder correr comandos, se ingresa al contenedor y se cambia de usuario, corriendo:
 
@@ -54,3 +51,7 @@ php artisan
 PRUEBAS DE CONECTIVIDAD DB CON TINKER
 1) docker exec -it oncelar php artisan tinker
 2) use Illuminate\Support\Facades\DB; DB::connection()->getPdo();
+
+
+
+
