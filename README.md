@@ -21,7 +21,7 @@ DB_PASSWORD=00000000
 
 **COMANDOS CON PHP ARTISAN DENTRO DEL CONTENEDOR**
 
-Al cosntruir el contenedor se da de alta un usuario no root (your_local_user), con el cual es necesario loguearse dentro del contenedor.
+Al construir el contenedor se da de alta un usuario no root (your_local_user), con el cual es necesario loguearse dentro del contenedor.
 Este usuario pertenece al grupo www-data, por lo cual puede acceder a artisan.  
 
 Para dar de alta este usuario, en el Dockerfile aparece:
