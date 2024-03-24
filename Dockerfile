@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-LABEL maintainer="Alan Facundo Biglieri - Arturo Diehl - 2024"
+LABEL maintainer="Original: Alan Facundo Biglieri - Refactorizado por Arturo Diehl - 2024"
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG USER_NAME=your_local_machine_user
