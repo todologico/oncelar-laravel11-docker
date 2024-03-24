@@ -44,7 +44,7 @@ cambiamos al usuario no root:
 
 su your_local_user
 
-verificamos qque accedemos a artisan:
+verificamos que accedemos a artisan:
 
 php artisan
 
