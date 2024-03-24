@@ -48,6 +48,21 @@ verificamos que accedemos a artisan:
 
 php artisan
 
+Opcionalmente puede hacerse directamente desde el interior del contenedor:  
+
+docker exec -it oncelar bash  
+adduser your_local_user  
+usermod -aG www-data your_local_user  
+id nuevo_usuario  
+
+lo que deberia mostrar:  
+
+uid=1000(your_local_user) gid=1000(your_local_user) groups=1000(your_local_user),33(www-data)
+
+
+
+
+
 --------------------------------------
 
 
