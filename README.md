@@ -5,7 +5,7 @@
 
 Clonar el repositorio.  
 
-Situados en /oncelar, desde la consola ejecutar el comando docker, el cual creara las carpeta "db" (volumen mariadb) y "src" (codigo laravel)
+Situados en /oncelar, desde la consola ejecutar el siguiente comando, el cual creara las carpeta "db" (volumen mariadb) y "src" (codigo laravel) y levantará los contenedores de los tres servicios.
 
 **mkdir -p src && mkdir -p db && USER_ID=$(id -u) docker-compose up -d**  
 
