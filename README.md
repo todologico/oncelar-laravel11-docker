@@ -11,6 +11,10 @@ Situados en /oncelar, desde la consola ejecutar el siguiente comando, el cual cr
 
 **mkdir -p src && mkdir -p db && USER_ID=$(id -u) docker-compose up -d**  
 
+El contenedor de laravel se visualiza en http://localhost:83/  
+
+El contenedor de phpmyadmin se visualiza en http://localhost:89/  
+
 Configuracion acceso DB en file .env que se ingresa automaticamente desde el file entrypoint 
 
 DB_CONNECTION=mysql  
