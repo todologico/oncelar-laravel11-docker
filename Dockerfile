@@ -1,9 +1,7 @@
 FROM ubuntu:22.04
 
-LABEL maintainer="Original: Alan Facundo Biglieri - Refactorizado por Arturo Diehl - 2024"
-
 ARG DEBIAN_FRONTEND=noninteractive
-ARG USER_NAME=your_local_machine_user
+ARG USER_NAME=your_user
 ARG USER_UID=1000
 RUN useradd -u $USER_UID -ms /bin/bash $USER_NAME
 RUN usermod -aG www-data $USER_NAME
@@ -31,7 +29,4 @@ VOLUME /var/www/app
 
 RUN chmod -R 755 /usr/local/bin/docker-entrypoint.sh
 
-
 ENTRYPOINT ["docker-entrypoint.sh"]
-
-
