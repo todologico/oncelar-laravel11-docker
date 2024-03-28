@@ -5,12 +5,11 @@
 
 Clonar el repositorio.  
 
-Situados en /oncelar, desde la consola ejecutar los comandos docker:
+Situados en /oncelar, desde la consola ejecutar el comando docker, el cual creara las carpeta "db" (volumen mariadb) y "src" (codigo laravel)
 
-mkdir -p src && mkdir -p db
-USER_ID=$(id -u) docker-compose up -d  
+**mkdir -p src && mkdir -p db && USER_ID=$(id -u) docker-compose up -d**  
 
-Configuracion acceso DB en file .env:  
+Configuracion acceso DB en file .env que se ingresa automaticamente desde el file entrypoint 
 
 DB_CONNECTION=mysql  
 DB_HOST=oncelar-db  
@@ -27,7 +26,7 @@ Este usuario pertenece al grupo www-data, por lo cual puede acceder a realizar c
 Para dar de alta este usuario, en el Dockerfile estoy agregando:
 
 ARG DEBIAN_FRONTEND=noninteractive  
-ARG USER_NAME=your_local_user  
+ARG USER_NAME=your_user  
 ARG USER_UID=1000  
 RUN useradd -u $USER_UID -ms /bin/bash $USER_NAME  
 RUN usermod -aG www-data $USER_NAME  
@@ -42,7 +41,7 @@ cat /etc/passwd
 
 cambiamos al usuario no root:
 
-su your_local_user
+su your_user
 
 verificamos que accedemos a artisan:
 
