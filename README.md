@@ -39,19 +39,19 @@ RUN usermod -aG www-data $USER_NAME
 
 y para poder correr comandos, se ingresa al contenedor y se cambia de usuario, corriendo:
 
-docker exec -it oncelar bash
+**docker exec -it oncelar bash**  
 
 revisamos todos los usuarios, verificando que el nuestro se encuentra activo:
 
-cat /etc/passwd
+**cat /etc/passwd**  
 
 cambiamos al usuario no root:
 
-su appuser
+**su appuser** 
 
 verificamos que accedemos a artisan:
 
-php artisan
+**php artisan**  
 
 Opcionalmente puede hacerse directamente desde el interior del contenedor:  
 
@@ -71,7 +71,7 @@ PRUEBAS DE CONECTIVIDAD DB
 **docker exec -it oncelar php artisan tinker**  
 **use Illuminate\Support\Facades\DB; DB::connection()->getPdo();**  
 
-o tambien es posible correr migraciones y hacer rollback, las cuales se muestran mediante phpmyadmin
+O tambien es posible correr migraciones y hacer rollback, las cuales se muestran mediante phpmyadmin
 Dentro del contenedor, con usuario no root (appuser), corremos:  
 
 **php artisan migrate**  
@@ -80,17 +80,12 @@ Y para retroceder:
 
 **php artisan migrate:rollback**    
 
-
---------------------------------------
-
-
-
-
 --------------------------------------
 
 SUPERVISORD
 
-service supervisor status  
+**service supervisor status**  
 
-supervisord log:    
-logfile=/var/log/supervisor/supervisord.log
+supervisord log:  
+
+**logfile=/var/log/supervisor/supervisord.log**  
