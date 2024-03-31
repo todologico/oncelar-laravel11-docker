@@ -13,7 +13,7 @@ Situados en /oncelar, desde la consola ejecutar el siguiente comando, el cual cr
 
 El contenedor de laravel se visualiza en http://localhost:83/  
 
-El contenedor de phpmyadmin se visualiza en http://localhost:89/  
+El contenedor de phpmyadmin se visualiza en http://localhost:89/  accediendo con host oncelar-db, usuario: oncelar, pass: 00000000  
 
 Configuracion acceso DB en file .env que se ingresa automaticamente desde el file entrypoint 
 
@@ -64,13 +64,32 @@ lo que deberia mostrar:
 
 uid=1000(your_local_user) gid=1000(your_local_user) groups=1000(your_local_user),33(www-data)
 
+--------------------------------------
+
+PRUEBAS DE CONECTIVIDAD DB  
+
+1) docker exec -it oncelar php artisan tinker
+2) use Illuminate\Support\Facades\DB; DB::connection()->getPdo();
+
+o tambien es posible correr migraciones y hacer rollback, las cuales se muestran mediante phpmyadmin
+Dentro del contenedor, con usuario no root (appuser), corremos:  
+
+php artisan migrate  
+
+Y para retroceder:  
+php artisan migrate:rollback  
+
+
+--------------------------------------
 
 
 
 
 --------------------------------------
 
+SUPERVISORD
 
-PRUEBAS DE CONECTIVIDAD DB CON TINKER
-1) docker exec -it oncelar php artisan tinker
-2) use Illuminate\Support\Facades\DB; DB::connection()->getPdo();
+service supervisor status  
+
+supervisord log:    
+logfile=/var/log/supervisor/supervisord.log

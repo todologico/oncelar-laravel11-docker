@@ -4,6 +4,7 @@ set -e
 
 APP_PATH=/var/www/app
 
+# primera funcion
 create_project() {
 
     composer create-project laravel/laravel:^11.0 $APP_PATH
@@ -22,15 +23,18 @@ create_project() {
 
 }
 
+# segunda funcion
 start_project() {
    
     chown -R www-data:www-data $APP_PATH/storage
     chown -R www-data:www-data $APP_PATH/bootstrap
    
+    #iniciando el demonio Supervisor para controlar php y nginx
+    # Supervisor is a client/server system that allows its users to monitor and control a number of processes on UNIX-like operating systems.
     /usr/bin/supervisord -c /etc/supervisord.conf
 }
 
-## llamado a funciones de inicializacion
+## llamado a funciones de inicializacion si no existe el file artisan
 if [ ! -f /var/www/app/artisan ]; then
     create_project
     sleep 1

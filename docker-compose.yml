@@ -30,8 +30,9 @@ services:
     environment:
       - PMA_HOST=oncelar-db
       - PMA_PORT=3310
-      - PMA_USER=oncelar
-      - PMA_PASSWORD=00000000
+      - PMA_ARBITRARY=1
+      #- PMA_USER=oncelar
+      #- PMA_PASSWORD=00000000
     ports:
       - '89:80'
     networks:
