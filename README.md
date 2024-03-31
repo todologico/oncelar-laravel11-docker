@@ -55,29 +55,30 @@ php artisan
 
 Opcionalmente puede hacerse directamente desde el interior del contenedor:  
 
-docker exec -it oncelar bash  
-adduser appuser  
-usermod -aG www-data your_local_user  
-id nuevo_usuario  
+**docker exec -it oncelar bash**  
+**adduser appuser**  
+**usermod -aG www-data appuser**  
+**id nuevo_usuario**  
 
 lo que deberia mostrar:  
 
-uid=1000(your_local_user) gid=1000(your_local_user) groups=1000(your_local_user),33(www-data)
+uid=1000(appuser) gid=1000(appuser) groups=1000(appuser),33(www-data)
 
 --------------------------------------
 
 PRUEBAS DE CONECTIVIDAD DB  
 
-1) docker exec -it oncelar php artisan tinker
-2) use Illuminate\Support\Facades\DB; DB::connection()->getPdo();
+**docker exec -it oncelar php artisan tinker**  
+**use Illuminate\Support\Facades\DB; DB::connection()->getPdo();**  
 
 o tambien es posible correr migraciones y hacer rollback, las cuales se muestran mediante phpmyadmin
 Dentro del contenedor, con usuario no root (appuser), corremos:  
 
-php artisan migrate  
+**php artisan migrate**  
 
 Y para retroceder:  
-php artisan migrate:rollback  
+
+**php artisan migrate:rollback**    
 
 
 --------------------------------------
