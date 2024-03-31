@@ -1,5 +1,6 @@
 Oncelar - Laravel 11 - Docker
 Laravel 11 - MariaDB - Phpmyadmin
+
 Instalación no productiva:
 
 Clonar el repositorio.
@@ -10,7 +11,7 @@ mkdir -p src && mkdir -p db && docker-compose up -d
 
 El contenedor de laravel se visualiza en http://localhost:83/
 
-El contenedor de phpmyadmin se visualiza en http://localhost:89/
+El contenedor de phpmyadmin se visualiza en http://localhost:89/ accediendo con host oncelar-db, usuario: oncelar, pass: 00000000
 
 Configuracion acceso DB en file .env que se ingresa automaticamente desde el file entrypoint
 
@@ -53,14 +54,30 @@ Opcionalmente puede hacerse directamente desde el interior del contenedor:
 
 docker exec -it oncelar bash
 adduser appuser
-usermod -aG www-data your_local_user
+usermod -aG www-data appuser
 id nuevo_usuario
 
 lo que deberia mostrar:
 
-uid=1000(your_local_user) gid=1000(your_local_user) groups=1000(your_local_user),33(www-data)
+uid=1000(appuser) gid=1000(appuser) groups=1000(appuser),33(www-data)
 
-PRUEBAS DE CONECTIVIDAD DB CON TINKER
+PRUEBAS DE CONECTIVIDAD DB
 
 docker exec -it oncelar php artisan tinker
 use Illuminate\Support\Facades\DB; DB::connection()->getPdo();
+
+O tambien es posible correr migraciones y hacer rollback, las cuales se muestran mediante phpmyadmin Dentro del contenedor, con usuario no root (appuser), corremos:
+
+php artisan migrate
+
+Y para retroceder:
+
+php artisan migrate:rollback
+
+SUPERVISORD
+
+service supervisor status
+
+supervisord log:
+
+logfile=/var/log/supervisor/supervisord.log
