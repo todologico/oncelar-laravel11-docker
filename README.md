@@ -1,4 +1,4 @@
-## Oncelar - Laravel 11 - MariaDB - Phpmyadmin - Docker Listo para Instalar  
+## Oncelar - Laravel 11 - MariaDB - Phpmyadmin - Docker  
 ##### - Last update 31/03/2024. Refactorizado del trabajo original de A.Biglieri 
   
 
