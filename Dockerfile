@@ -1,10 +1,12 @@
 FROM ubuntu:22.04
 
 ARG DEBIAN_FRONTEND=noninteractive
+
+# user para correr artisan dentro del contenedor
 ARG USER_NAME=appuser
 ARG USER_UID=1000
 RUN useradd -u $USER_UID -ms /bin/bash $USER_NAME
-RUN usermod -aG www-data $USER_NAME
+RUN usermod -aG 1000 $USER_NAME
 
 RUN apt update
 

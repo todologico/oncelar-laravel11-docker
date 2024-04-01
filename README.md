@@ -25,18 +25,17 @@ DB_DATABASE=oncelar
 DB_USERNAME=oncelar  
 DB_PASSWORD=00000000  
 
-**COMANDOS CON PHP ARTISAN DENTRO DEL CONTENEDOR**
+**COMANDOS CON PHP ARTISAN DENTRO DEL CONTENEDOR CON USUARIO APPUSER**
 
 Al construir el contenedor se da de alta un usuario no root (appuser), con el cual es necesario loguearse dentro del mismo.
-Este usuario pertenece al grupo www-data, por lo cual puede acceder a realizar comandos artisan.  
+Este usuario pertenece al grupo 1000, por lo cual puede acceder a realizar comandos artisan.  
 
 Para dar de alta este usuario, en el Dockerfile estoy agregando:
 
-ARG DEBIAN_FRONTEND=noninteractive  
-ARG USER_NAME=appuser  
-ARG USER_UID=1000  
-RUN useradd -u $USER_UID -ms /bin/bash $USER_NAME  
-RUN usermod -aG www-data $USER_NAME  
+ARG USER_NAME=appuser
+ARG USER_UID=1000
+RUN useradd -u $USER_UID -ms /bin/bash $USER_NAME
+RUN usermod -aG 1000 $USER_NAME
 
 y para poder correr comandos, se ingresa al contenedor y se cambia de usuario, corriendo:
 
@@ -58,8 +57,8 @@ Opcionalmente puede hacerse directamente desde el interior del contenedor:
 
 **docker exec -it oncelar bash**  
 **adduser appuser**  
-**usermod -aG www-data appuser**  
-**id nuevo_usuario**  
+**usermod -aG 1000 appuser**  
+**id appuser**  
 
 lo que deberia mostrar:  
 
