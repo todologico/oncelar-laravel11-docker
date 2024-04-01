@@ -27,7 +27,7 @@ DB_PASSWORD=00000000
 
 **COMANDOS CON PHP ARTISAN DENTRO DEL CONTENEDOR CON USUARIO APPUSER**
 
-Al construir el contenedor se da de alta un usuario no root (appuser), con el cual es necesario loguearse dentro del mismo.
+Al construir el contenedor se da de alta un usuario no root (appuser), con el cual es necesario loguearse.
 Este usuario pertenece al grupo 1000, por lo cual puede acceder a realizar comandos artisan.  
 
 Para dar de alta este usuario, en el Dockerfile estoy agregando:
@@ -60,9 +60,11 @@ Opcionalmente puede hacerse directamente desde el interior del contenedor:
 **usermod -aG 1000 appuser**  
 **id appuser**  
 
-lo que deberia mostrar:  
+lo que muestra:  
 
-uid=1000(appuser) gid=1000(appuser) groups=1000(appuser),33(www-data)
+root@oncelar:/var/www/app# su appuser  
+appuser@oncelar:/var/www/app$ id appuser  
+uid=1000(appuser) gid=1000(appuser) groups=1000(appuser)  
 
 --------------------------------------
 
