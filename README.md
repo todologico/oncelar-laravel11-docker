@@ -36,6 +36,7 @@ ARG USER_NAME=appuser
 ARG USER_UID=1000
 RUN useradd -u $USER_UID -ms /bin/bash $USER_NAME
 RUN usermod -aG 1000 $USER_NAME
+RUN usermod -aG www-data $USER_NAME
 
 y para poder correr comandos, se ingresa al contenedor y se cambia de usuario, corriendo:
 
