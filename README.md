@@ -1,4 +1,4 @@
-## Oncelar - Laravel 11 - MariaDB - Phpmyadmin - Docker  
+## Oncelar - Laravel 11 - MariaDB - phpMyAdmin - Docker  
 ##### - Last update 02/mayo/2024.
   
 
