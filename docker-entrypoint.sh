@@ -4,7 +4,7 @@ set -e
 
 APP_PATH=/var/www/app
 
-# first funcion
+# primera funcion
 create_laravel_project() {
 
     composer create-project laravel/laravel:^11.0 $APP_PATH
@@ -23,7 +23,7 @@ create_laravel_project() {
 
 }
 #------------------------------------------------------
-# second funcion
+# sugunda funcion
 start_laravel_project() {
 
     chown -R 1000:1000 $APP_PATH
